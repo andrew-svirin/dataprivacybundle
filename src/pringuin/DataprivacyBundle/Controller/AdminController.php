@@ -20,7 +20,7 @@ class AdminController extends FrontendController
     }
 
     /**
-     * @Route("/pringuin_dataprivacy")
+     * @Route("/admin/pringuin_dataprivacy")
      */
     public function indexAction(Request $request)
     {
@@ -84,6 +84,7 @@ class AdminController extends FrontendController
         $this->view->message = $responsemessage;
         $this->view->configurations = $configurations;
 
+        return $this->render('pringuinDataprivacyBundle::admin/index.html.twig', $this->view->getAllParameters());
         //return new Response('Hello world from pringuin_dataprivacy');
     }
 

@@ -1,28 +1,30 @@
-{% do pimcore_head_script().appendFile(asset('bundles/pringuindataprivacy/js/tarteaucitron/tarteaucitron.js')) %}
+{% do pimcore_head_script().appendFile(asset('/bundles/pringuindataprivacy/js/tarteaucitron/tarteaucitron.js')) %}
 <script>
-    tarteaucitron.init({
-        "privacyUrl": "{{ configuration.privacyUrl }}", /* Privacy policy url */
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('show');
+        tarteaucitron.init({
+            "privacyUrl": "{{ configuration.privacyUrl }}", /* Privacy policy url */
 
-        "hashtag": "{{ configuration.hashtag }}", /* Open the panel with this hashtag */
-        "cookieName": "{{ configuration.cookieName }}", /* Cookie name */
+            "hashtag": "{{ configuration.hashtag }}", /* Open the panel with this hashtag */
+            "cookieName": "{{ configuration.cookieName }}", /* Cookie name */
 
-        "orientation": "{{ configuration.orientation }}", /* Banner position (top - bottom) */
-        "showAlertSmall": {{ configuration.showAlertSmall }}, /* Show the small banner on bottom right */
-        "cookieslist": {{ configuration.cookieslist }}, /* Show the cookie list */
+            "orientation": "{{ configuration.orientation }}", /* Banner position (top - bottom) */
+            "showAlertSmall": {{ configuration.showAlertSmall }}, /* Show the small banner on bottom right */
+            "cookieslist": {{ configuration.cookieslist }}, /* Show the cookie list */
 
-        "adblocker": {{ configuration.adblocker }}, /* Show a Warning if an adblocker is detected */
-        "AcceptAllCta" : {{ configuration.AcceptAllCta }}, /* Show the accept all button when highPrivacy on */
-        "highPrivacy": {{ configuration.highPrivacy }}, /* Disable auto consent */
-        "handleBrowserDNTRequest": {{ configuration.handleBrowserDNTRequest }}, /* If Do Not Track == 1, disallow all */
+            "adblocker": {{ configuration.adblocker }}, /* Show a Warning if an adblocker is detected */
+            "AcceptAllCta" : {{ configuration.AcceptAllCta }}, /* Show the accept all button when highPrivacy on */
+            "highPrivacy": {{ configuration.highPrivacy }}, /* Disable auto consent */
+            "handleBrowserDNTRequest": {{ configuration.handleBrowserDNTRequest }}, /* If Do Not Track == 1, disallow all */
 
-        "removeCredit": {{ configuration.removeCredit }}, /* Remove credit link */
-        "moreInfoLink": {{ configuration.moreInfoLink }}, /* Show more info link */
-        "useExternalCss": {{ configuration.useExternalCss }}, /* If false, the tarteaucitron.css file will be loaded */
+            "removeCredit": {{ configuration.removeCredit }}, /* Remove credit link */
+            "moreInfoLink": {{ configuration.moreInfoLink }}, /* Show more info link */
+            "useExternalCss": {{ configuration.useExternalCss }}, /* If false, the tarteaucitron.css file will be loaded */
 
-        "cookieDomain": "{{ configuration.useExternalCss }}", /* Shared cookie for subdomain website */
+            "cookieDomain": "{{ configuration.useExternalCss }}", /* Shared cookie for subdomain website */
 
-        "readmoreLink": "{{ configuration.readmoreLink }}" /* Change the default readmore link pointing to opt-out.ferank.eu */
-    });
+            "readmoreLink": "{{ configuration.readmoreLink }}" /* Change the default readmore link pointing to opt-out.ferank.eu */
+        });
 {% for configurationidentifier,configurationvalue in configuration %}
     {% if configurationvalue is not empty %}
         {% if configurationidentifier == 'crazyeggId' %}
@@ -81,4 +83,5 @@
         {% endif %}
     {% endif %}
 {% endfor %}
+    }, false);
 </script>

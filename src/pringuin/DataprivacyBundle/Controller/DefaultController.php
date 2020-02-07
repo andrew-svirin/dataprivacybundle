@@ -3,13 +3,9 @@
 namespace pringuin\DataprivacyBundle\Controller;
 
 use Pimcore\Controller\FrontendController;
-use Pimcore\Tool\Authentication;
 use pringuin\DataprivacyBundle\Helper\Configurationhelper;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends FrontendController
 {
@@ -39,5 +35,6 @@ class DefaultController extends FrontendController
 
         $this->view->configuration = $configuration;
 
+        return $this->render('pringuinDataprivacyBundle::default/default.html.twig', $this->view->getAllParameters());
     }
 }

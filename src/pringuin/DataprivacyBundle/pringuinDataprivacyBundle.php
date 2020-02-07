@@ -30,4 +30,13 @@ class pringuinDataprivacyBundle extends AbstractPimcoreBundle
         return self::PACKAGE_NAME;
     }
 
+    /**
+     * Get path to include in admin iframe
+     *
+     * @return string|null
+     */
+    public function getAdminIframePath()
+    {
+      return '/admin/pringuin_dataprivacy';
+    }
 }
