@@ -26,12 +26,10 @@ This bundle does include the great script [tarteaucitron.js](https://github.com/
 ### Installation via Extension Manager
 After you have installed the Dataprivacy Bundle via composer, open the pimcore administration backend and go to `Tools` => `Extension`:
 - Click the green `+` Button in `Enable / Disable` row
-- Click the green `+` Button in `Install/Uninstall` row
 
 ### Installation via CommandLine
 After you have installed the Dataprivacy Bundle via composer:
 - Execute: `$ bin/console pimcore:bundle:enable pringuinDataprivacyBundle`
-- Execute: `$ bin/console pimcore:bundle:install pringuinDataprivacyBundle`
 
 ### Configure trackers, tools and services
 The backend configuration should now be available. below the search in your pimcore admin backend.
@@ -47,6 +45,10 @@ To include the cookie consent into your frontend layout, you can use the followi
 {{ pimcore_action('default', 'default', 'pringuinDataprivacyBundle', {}) }}
 ```
 Hint: You can always override this template by implementing your own template in the folder `PIMCOREINSTALLATION/app/Resources/pringuinDataprivacyBundle/views/default/default.html.twig`
+Make sure that you have in your `layout.html.twig` invoked function in the end of `html > body`:
+```twig
+{{ pimcore_head_script() }}
+```
 
 ![Default Frontend Interface](docs/img/frontend_locale_cookie_consent.png)
 
