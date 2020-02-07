@@ -45,6 +45,7 @@ To include the cookie consent into your frontend layout, you can use the followi
 {{ pimcore_action('default', 'default', 'pringuinDataprivacyBundle', {}) }}
 ```
 Hint: You can always override this template by implementing your own template in the folder `PIMCOREINSTALLATION/app/Resources/pringuinDataprivacyBundle/views/default/default.html.twig`
+
 Make sure that you have in your `layout.html.twig` invoked function in the end of `html > body`:
 ```twig
 {{ pimcore_head_script() }}
