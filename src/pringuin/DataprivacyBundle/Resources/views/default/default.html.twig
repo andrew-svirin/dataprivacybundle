@@ -1,9 +1,8 @@
 {% do pimcore_head_script().appendFile(asset('/bundles/pringuindataprivacy/js/tarteaucitron/tarteaucitron.js')) %}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('show');
         tarteaucitron.init({
-            "privacyUrl": "{{ configuration.privacyUrl }}", /* Privacy policy url */
+            "privacy_url": "{{ configuration.privacyUrl }}", /* Privacy policy url */
 
             "hashtag": "{{ configuration.hashtag }}", /* Open the panel with this hashtag */
             "cookieName": "{{ configuration.cookieName }}", /* Cookie name */
@@ -27,7 +26,7 @@
         });
 {% for configurationidentifier,configurationvalue in configuration %}
     {% if configurationvalue is not empty %}
-        {% if configurationidentifier == 'crazyeggId' %}
+        {% if configurationidentifier == 'crazyegg_id' %}
             tarteaucitron.user.crazyeggId = '{{ configurationvalue }}';
             (tarteaucitron.job = tarteaucitron.job || []).push('crazyegg');
         {% elseif configurationidentifier == 'google_analytics_ga_js' %}
@@ -77,7 +76,7 @@
         {% elseif configurationidentifier == 'mautic_url' %}
             tarteaucitron.user.mauticurl = '{{ configurationvalue }}';
             (tarteaucitron.job = tarteaucitron.job || []).push('mautic');
-        {% elseif configurationidentifier == 'zopimID' %}
+        {% elseif configurationidentifier == 'zopim_id' %}
             tarteaucitron.user.zopimID = '{{ configurationvalue }}';
             (tarteaucitron.job = tarteaucitron.job || []).push('zopim');
         {% endif %}
