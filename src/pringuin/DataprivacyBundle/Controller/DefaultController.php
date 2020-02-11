@@ -35,14 +35,14 @@ class DefaultController extends FrontendController
             }
         }
 
-        if(is_numeric($configuration['privacyUrl'])){
+        if(!empty($configuration['privacy_url']) && is_numeric($configuration['privacy_url'])){
             $documentService = $this->get('pimcore.document_service');
-            $document = Document::getById($configuration['privacyUrl']);
+            $document = Document::getById($configuration['privacy_url']);
             $translations = $documentService->getTranslations($document);
             if(!empty($translations[$request->getLocale()])){
-                $configuration['privacyUrl'] = Document::getById($translations[$request->getLocale()])->getFullPath();
+                $configuration['privacy_url'] = Document::getById($translations[$request->getLocale()])->getFullPath();
             } else {
-                $configuration['privacyUrl'] = $document->getFullPath();
+                $configuration['privacy_url'] = $document->getFullPath();
             }
         }
 

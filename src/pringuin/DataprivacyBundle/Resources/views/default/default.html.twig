@@ -2,7 +2,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         tarteaucitron.init({
-            "privacy_url": "{{ configuration.privacyUrl }}", /* Privacy policy url */
+            "privacyUrl": "{{ configuration.privacy_url }}", /* Privacy policy url */
 
             "hashtag": "{{ configuration.hashtag }}", /* Open the panel with this hashtag */
             "cookieName": "{{ configuration.cookieName }}", /* Cookie name */
@@ -24,6 +24,7 @@
 
             "readmoreLink": "{{ configuration.readmoreLink }}" /* Change the default readmore link pointing to opt-out.ferank.eu */
         });
+        window.tarteaucitronForceLanguage = '{{ app.request.getLocale() }}';
 {% for configurationidentifier,configurationvalue in configuration %}
     {% if configurationvalue is not empty %}
         {% if configurationidentifier == 'crazyegg_id' %}
